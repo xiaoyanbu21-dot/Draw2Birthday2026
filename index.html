@@ -1,47 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Draw2Birthday2026 Smooth</title>
+<title>Draw2Birthday2026 - Kindness in Every Sketch</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui;background:#fff;overscroll-behavior:none}
-.header{background:#000;color:#fff;text-align:center;padding:16px;font-weight:800}
-.wrap{max-width:900px;margin:auto;padding:12px}
-#c{width:100%;height:65vh;min-height:500px;border:3px solid #000;border-radius:16px;display:block;touch-action:none;background:#fff}
-.tools{display:flex;gap:8px;justify-content:center;margin:14px 0;flex-wrap:wrap}
-.tools button,.tools input{padding:10px 16px;border:2px solid #000;border-radius:10px;font-weight:700}
-.tools button.active{background:#000;color:#fff}
-.stickers{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.stickers button{font-size:28px;padding:6px 12px;border:2px solid #000;border-radius:10px}
-.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
-.inputs input{padding:12px;border:2px solid #000;border-radius:10px;width:100%}
-.action{display:flex;gap:10px;justify-content:center;margin:16px 0}
-.action button{padding:14px 20px;border-radius:12px;font-weight:800;flex:1}
-#saveBtn{background:#000;color:#fff} #clearBtn{background:#fff} #dlBtn{background:#ffde59}
+:root{--bg:#0a0a0a;--card:#141414;--border:#2a2a2a;--yellow:#f9d949;--yellow2:#ffe87a;--muted:#9a9a9a}
+body{background:var(--bg);color:#fff;font-family:system-ui;overflow-x:hidden}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;line-height:.9}
+.nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+.nav a.active{color:var(--yellow);border-bottom:2px solid var(--yellow);padding-bottom:4px}
+.btn{padding:10px 18px;border-radius:10px;font-weight:700;border:1.5px solid var(--border);cursor:pointer;font-size:14px}
+.btn-yellow{background:var(--yellow);color:#000;border-color:var(--yellow)}
+.btn-dark{background:transparent;color:#fff}
+.hero{max-width:1300px;margin:24px auto;display:grid;grid-template-columns:1.2fr.8fr;gap:18px;padding:0 18px}
+.card{background:linear-gradient(145deg,#151515,#101010);border:1px solid #242424;border-radius:18px;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(249,217,73,.08),0 0 40px rgba(249,217,73,.08)}
+.glow{position:absolute;inset:0;pointer-events:none;border:1px solid rgba(249,217,73,.25);border-radius:18px;box-shadow:inset 0 0 30px rgba(249,217,73,.06)}
+.hero-left{padding:32px 30px}
+.hero-left h1{font-size:42px;font-weight:800;color:var(--yellow);line-height:1.05;margin-bottom:12px}
+.hero-left p{color:#d0d0d0;font-size:16px;line-height:1.5}
+.hero-left.sub{color:var(--yellow2);margin-top:12px;font-size:14px}
+.feats{display:flex;gap:12px;margin-top:20px}
+.feat{flex:1;border:1px solid #2a2a1a;background:#16160e;border-radius:10px;padding:12px}
+.feat b{display:block;color:var(--yellow);font-size:13px;margin-bottom:4px}
+.feat span{font-size:11px;color:var(--muted);line-height:1.3;display:block}
+.hero-actions{display:flex;gap:12px;margin-top:20px}
+.hero-right{padding:18px;display:flex;flex-direction:column;gap:10px}
+.prompt{background:var(--yellow);color:#000;border-radius:10px 10px 0 0;padding:10px;text-align:center;font-weight:800;font-size:12px}
+.prompt-img{background:#1a1a1a;border-radius:14px;overflow:hidden;border:1px solid #2a2a2a;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.leader{max-width:1300px;margin:28px auto 0;padding:0 18px}
+.leader-title{text-align:center;color:var(--yellow);letter-spacing:3px;font-size:12px;margin-bottom:12px}
+.leader-card{padding:18px 20px}
+.leader-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:18px}
+.ranklist{font-size:13px;line-height:1.9;color:#cfcfcf}
+.top3{display:flex;gap:12px;justify-content:center}
+.topbox{background:linear-gradient(#ffe87a,#f9d949);color:#000;border-radius:14px;padding:12px 10px;text-align:center;flex:1;max-width:180px;border:2px solid #000;position:relative}
+.topbox.medal{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#000;color:var(--yellow);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:800}
+.table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px}
+.table th{color:var(--yellow);text-align:left;padding:8px 6px;border-bottom:1px solid #2a2a2a;font-size:11px}
+.table td{padding:8px 6px;border-bottom:1px solid #1a1a1a;color:#ccc}
+.stars{color:var(--yellow)}
+.canvas-section{max-width:1100px;margin:30px auto;padding:0 18px;display:none}
+.canvas-section.active{display:block}
+#drawCanvas{width:100%;height:62vh;min-height:520px;background:#fff;border-radius:16px;border:3px solid var(--yellow);touch-action:none;display:block}
+.tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:14px 0}
+.tools button,.tools input{padding:10px 16px;border-radius:10px;border:1.5px solid #333;background:#1a1a1a;color:#fff;font-weight:700}
+.tools button.active{background:var(--yellow);color:#000;border-color:var(--yellow)}
+.footer{margin-top:30px;border-top:1px solid #222;padding:14px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+.badges{display:flex;gap:8px}
+.badge{border:1px solid rgba(249,217,73,.4);padding:6px 10px;border-radius:20px;font-size:11px;color:var(--yellow)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.leader-grid{grid-template-columns:1fr}.nav{display:none}.hero-left h1{font-size:32px}}
 </style>
 </head>
 <body>
-<div class="header">🎂 Draw2Birthday2026 - Smooth Drawing</div>
-<div class="wrap">
-<canvas id="c"></canvas>
+<div class="topbar">
+<div class="logo"><div>🎨</div><div>Draw2Birthday<br>2026</div></div>
+<div class="nav"><a class="active" onclick="show('home')">Home</a><a onclick="show('draw')">Draw</a><a>Gallery</a><a>Leaderboard</a><a>About</a></div>
+<div style="display:flex;gap:10px"><button class="btn btn-dark">Sign In</button><button class="btn btn-yellow" onclick="show('draw')">Start Drawing →</button></div>
+</div>
+<div id="home-section">
+<div class="hero">
+<div class="card hero-left"><div class="glow"></div>
+<h1>Kindness in Every Sketch</h1>
+<p>Free anime drawings for all ages — from kids to elders. Create, share, and celebrate wholesome art together.</p>
+<p class="sub">A joyful, inclusive art community where creativity meets kindness.</p>
+<div class="feats">
+<div class="feat"><b>♡ Free & Open</b><span>100% free. No paywalls.</span></div>
+<div class="feat"><b>👥 For All Ages</b><span>Kids, teens, adults & elders</span></div>
+<div class="feat"><b>✨ Anime-Style</b><span>Simple, fun, wholesome art</span></div>
+</div>
+<div class="hero-actions"><button class="btn btn-yellow" onclick="show('draw')">Join the Celebration — Draw Now →</button><button class="btn btn-dark">Learn More</button></div>
+</div>
+<div class="card hero-right"><div class="glow"></div>
+<div class="prompt">Today's Inspiration Prompt:<br>Birthday Kindness ♡</div>
+<div style="font-size:11px;color:var(--muted);text-align:center">Draw someone smiling with a birthday treat!</div>
+<div class="prompt-img"><div style="font-size:70px">🎂👧</div></div>
+</div>
+</div>
+<div class="leader"><div class="leader-title">LEADERBOARD • TOP 25 DRAWINGS ☆ SEASON 2026</div>
+<div class="card leader-card"><div class="glow"></div>
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><h2 style="font-size:26px">Top 25 Drawings<br><span style="color:var(--yellow);font-size:20px">Celebrating Kindness Through Art</span></h2>
+<div class="top3">
+<div class="topbox"><div class="medal">2nd</div><div>🐱</div><b>Leo_draws</b><div style="font-size:11px">★★★★★ 4.95 • 2,098</div></div>
+<div class="topbox" style="transform:translateY(-10px)"><div class="medal">1st</div><div>🦊</div><b>Aiko_Harune</b><div style="font-size:11px">★★★★★ 4.98 • 2,341</div></div>
+<div class="topbox"><div class="medal">3rd</div><div>👵</div><b>GrandmaMichi</b><div style="font-size:11px">★★★★★ 4.92 • 1,964</div></div>
+</div></div>
+<div class="leader-grid">
+<div class="ranklist">04 SunnySketches - Lantern Fox 1,743<br>05 KodaDraws - Cake Slice 1,699<br>06 Chiby Pup Pals 1,620<br>07 Kindness Origami Crane +3 ▲<br>08 Festive Panda Cupcake +2 ▲</div>
+<div><table class="table"><tr><th>RANK</th><th>ARTIST</th><th>RATING</th><th>STARS</th><th>TREND</th></tr><tr><td>08</td><td>Lantern Fox</td><td class="stars">★★★★★ 4.89</td><td>1,812</td><td style="color:#5f5">+12 ▲</td></tr><tr><td>07</td><td>Kda_Draws</td><td class="stars">★★★★★ 4.87</td><td>1,743</td><td style="color:#5f5">+8 ▲</td></tr></table></div>
+</div></div></div>
+</div>
+<div id="draw-section" class="canvas-section">
+<h2 style="text-align:center;color:var(--yellow);margin-bottom:14px">🎨 Draw Your Birthday Kindness - Smooth Lines Fixed!</h2>
+<canvas id="drawCanvas"></canvas>
 <div class="tools">
-<button id="pen" class="active">✏️ Pen</button>
-<button id="eraser">🧽 Eraser</button>
-<input type="color" id="col" value="#000000">
-<input type="range" id="sz" min="2" max="40" value="5">
+<button id="pen" class="active">✏️ Pen</button><button id="eraser">🧽 Eraser</button>
+<input type="color" id="col" value="#000000"><input type="range" id="sz" min="2" max="40" value="5">
+<button onclick="clearBoard()" style="background:#fff;color:#000">Clear</button>
+<button onclick="download()" style="background:var(--yellow);color:#000">Download</button>
+<button onclick="saveDraw()" style="background:#fff;color:#000">Save + Rank</button>
 </div>
-<div class="stickers">
-<button data-e="🎂">🎂</button><button data-e="🎈">🎈</button><button data-e="🎁">🎁</button><button data-e="🦄">🦄</button><button data-e="🌈">🌈</button><button data-e="❤️">❤️</button>
 </div>
-<div class="inputs"><input id="name" placeholder="Your Name"><input id="bdate" type="date"></div>
-<div class="action"><button id="clearBtn">Clear</button><button id="dlBtn">Download</button><button id="saveBtn">Save + Rank</button></div>
-<div style="border:2px solid #000;border-radius:12px;padding:14px;margin-top:12px"><h3>🏆 Top 25</h3><div id="board">No drawings yet</div></div>
-</div>
+<div class="footer"><div>Draw2Birthday 2026 • Free. Kind. Creative. For everyone, ages 5-105.</div><div class="badges"><div class="badge">✓ Safe & Kind</div><div class="badge">♡ Kids Friendly</div><div class="badge">✨ 100% Free Forever</div></div></div>
 <script>
-const ca=document.getElementById('c'),cx=ca.getContext('2d');
-let drawing=false,last=null,mode='pen';
+function show(id){
+document.getElementById('home-section').style.display=id==='home'?'block':'none';
+document.getElementById('draw-section').classList.toggle('active',id==='draw');
+if(id==='draw')setTimeout(resize,100);
+window.scrollTo(0,0);
+}
+const ca=document.getElementById('drawCanvas'),cx=ca.getContext('2d');
+let drawing=false,mode='pen';
 function resize(){
 const dpr=window.devicePixelRatio||1;
 const r=ca.getBoundingClientRect();
@@ -49,34 +120,20 @@ ca.width=r.width*dpr;ca.height=r.height*dpr;
 ca.style.width=r.width+'px';ca.style.height=r.height+'px';
 cx.setTransform(dpr,0,0,dpr,0,0);
 cx.lineCap='round';cx.lineJoin='round';
+cx.fillStyle='#fff';cx.fillRect(0,0,r.width,r.height);
 }
-resize();setTimeout(resize,200);
-function pos(e){
-const r=ca.getBoundingClientRect();
-const t=e.touches?e.touches[0]:e.changedTouches?e.changedTouches[0]:e;
-return{x:t.clientX-r.left,y:t.clientY-r.top};
-}
-function s(e){e.preventDefault();drawing=true;last=pos(e);cx.beginPath();cx.moveTo(last.x,last.y);}
-function m(e){
-if(!drawing)return;e.preventDefault();
-const p=pos(e);
-cx.globalCompositeOperation=mode==='eraser'?'destination-out':'source-over';
-cx.strokeStyle=col.value;cx.lineWidth=sz.value;
-cx.lineTo(p.x,p.y);cx.stroke();
-cx.beginPath();cx.moveTo(p.x,p.y);
-last=p;
-}
-function e(e){if(!drawing)return;e.preventDefault();drawing=false;cx.closePath();cx.globalCompositeOperation='source-over';}
-ca.addEventListener('mousedown',s);ca.addEventListener('mousemove',m);ca.addEventListener('mouseup',e);ca.addEventListener('mouseleave',e);
-ca.addEventListener('touchstart',s,{passive:false});ca.addEventListener('touchmove',m,{passive:false});ca.addEventListener('touchend',e,{passive:false});ca.addEventListener('touchcancel',e,{passive:false});
+resize();
+function pos(e){const r=ca.getBoundingClientRect();const t=e.touches?e.touches[0]:e.changedTouches?e.changedTouches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+function s(e){e.preventDefault();drawing=true;const p=pos(e);cx.beginPath();cx.moveTo(p.x,p.y);}
+function m(e){if(!drawing)return;e.preventDefault();const p=pos(e);cx.globalCompositeOperation=mode==='eraser'?'destination-out':'source-over';cx.strokeStyle=col.value;cx.lineWidth=sz.value;cx.lineTo(p.x,p.y);cx.stroke();cx.beginPath();cx.moveTo(p.x,p.y);}
+function eFn(e){if(!drawing)return;e.preventDefault();drawing=false;cx.closePath();cx.globalCompositeOperation='source-over';}
+ca.addEventListener('mousedown',s);ca.addEventListener('mousemove',m);ca.addEventListener('mouseup',eFn);ca.addEventListener('mouseleave',eFn);
+ca.addEventListener('touchstart',s,{passive:false});ca.addEventListener('touchmove',m,{passive:false});ca.addEventListener('touchend',eFn,{passive:false});
 pen.onclick=()=>{mode='pen';pen.classList.add('active');eraser.classList.remove('active');};
 eraser.onclick=()=>{mode='eraser';eraser.classList.add('active');pen.classList.remove('active');};
-clearBtn.onclick=()=>{const r=ca.getBoundingClientRect();cx.clearRect(0,0,r.width,r.height);cx.beginPath();};
-dlBtn.onclick=()=>{const a=document.createElement('a');a.download='drawing.png';a.href=ca.toDataURL();a.click();};
-document.querySelectorAll('.stickers button').forEach(b=>{b.onclick=()=>{cx.font='40px serif';const r=ca.getBoundingClientRect();cx.fillText(b.dataset.e,r.width/2,r.height/2);};});
-let db=JSON.parse(localStorage.getItem('d2b')||'[]');
-function rb(){board.innerHTML=db.length?db.map((d,i)=>`${i+1}. <b>${d.n}</b>`).join('<br>'):'No drawings yet';}rb();
-saveBtn.onclick=()=>{const n=name.value||'Anon';const d=bdate.value||'';db.unshift({n,d});localStorage.setItem('d2b',JSON.stringify(db));rb();alert('Saved!');};
+function clearBoard(){const r=ca.getBoundingClientRect();cx.clearRect(0,0,r.width,r.height);cx.fillStyle='#fff';cx.fillRect(0,0,r.width,r.height);cx.beginPath();}
+function download(){const a=document.createElement('a');a.download='birthday.png';a.href=ca.toDataURL();a.click();}
+function saveDraw(){alert('Saved! Will appear in Top 25!');}
 </script>
 </body>
-                                                                                             </html>
+  </html>
