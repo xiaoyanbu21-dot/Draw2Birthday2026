@@ -1,80 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabka B-Day - Welcome</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabka B-Day - Celebrate Everyone's Special Day!</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Nunito',sans-serif;background:#FFD9C0;min-height:100vh;overflow-x:hidden}
-.wrap{display:flex;min-height:100vh;max-width:1400px;margin:0 auto}
-.left{flex:1.1;position:relative;display:flex;align-items:center;justify-content:center;padding:20px}
-.poster-card{background:#FFFEF9;border:2px solid #000;border-radius:12px;padding:18px 22px;width:360px;transform:rotate(-2deg);box-shadow:8px 8px 0 #0001;text-align:center}
-.poster-card h1{font-family:'Fredoka';font-size:52px;line-height:0.9;font-weight:700}
-.poster-card .t1{color:#1A9A8A}.poster-card .t2{color:#FF8C69}.poster-card .t3{color:#FF8C69}.poster-card .t3 span{color:#1A9A8A}
-.poster-card .sub{margin-top:12px;font-family:'Fredoka';font-size:24px;line-height:1.2;font-weight:600;color:#0F2D3D}
-.right{flex:1.2;background:#fff;margin:24px 24px 24px 0;border-radius:24px;padding:28px 32px;box-shadow:0 20px 60px #0001;display:flex;flex-direction:column}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-.nav{display:flex;gap:24px}
-.nav a{text-decoration:none;color:#333;font-weight:700;font-size:14px}
-.nav a.active{border-bottom:2px solid #333;padding-bottom:2px}
-.logo{font-family:'Fredoka';font-weight:700;color:#1A9A8A;font-size:22px;line-height:1;text-align:right}
-.main h2{font-family:'Fredoka';font-size:44px;color:#0F2D3D;line-height:1.1;margin-bottom:12px}
-.main p{font-size:15px;color:#333;line-height:1.5}
-.feats{display:flex;gap:14px;margin:28px 0}
-.feat{flex:1;background:#E6F6F5;border-radius:16px;padding:18px 14px;text-align:center}
-.feat.peach{background:#FFF2E8}
-.feat .ic{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-size:22px}
-.feat h4{font-family:'Fredoka';font-size:15px;margin-bottom:6px}
-.feat p{font-size:12px;line-height:1.3}
-.btn{margin-top:auto;background:#1F8A7E;color:#fff;text-align:center;padding:18px;border-radius:999px;font-family:'Fredoka';font-size:22px;font-weight:700;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 0 #0F5A52;transition:.1s}
-.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #0F5A52}
-.small{text-align:center;font-size:12px;color:#1F8A7E;margin-top:14px;font-weight:700}
-.girl{position:absolute;left:10px;bottom:0;width:62%;max-width:520px;pointer-events:none}
-@media(max-width:900px){
-.wrap{flex-direction:column}
-.girl{position:relative;width:100%;max-width:340px;left:0}
-.right{margin:0 16px 20px}
-.main h2{font-size:32px}
-.feats{flex-direction:column}
-.poster-card{width:300px}
-}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Nunito',sans-serif;background:#F6F7FB;color:#111}
+.header{max-width:1200px;margin:14px auto;background:#fff;border-radius:16px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.logo{font-weight:800;font-size:28px;color:#1E64C8;display:flex;align-items:center;gap:8px}
+.nav{display:flex;gap:22px;align-items:center;font-weight:700;font-size:14px;color:#555}
+.nav a{text-decoration:none;color:#666}.nav a.active{color:#1E64C8;border-bottom:3px solid #1E64C8;padding-bottom:2px}
+.btn-blue{background:#2B78E8;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700}
+.hero{max-width:1200px;margin:16px auto;background:#EAF2FF;border-radius:20px;padding:28px 20px 24px;text-align:center;position:relative;overflow:hidden}
+.hero h1{font-size:36px;font-weight:800;color:#0A3A8C;margin-bottom:8px}
+.hero p{color:#333;font-size:14px;max-width:700px;margin:0 auto;line-height:1.4}
+.hero .cta{background:#5A8DFF;color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:700;margin:16px 0 10px;cursor:pointer}
+.hero .small{font-size:12px;color:#444}
+.cards{max-width:1200px;margin:14px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 6px 30px}
+.card{border-radius:18px;padding:18px;position:relative;min-height:300px;display:flex;flex-direction:column;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+.card .ill{flex:1;display:grid;place-items:center;font-size:70px;margin:10px 0}
+.card h3{font-size:22px;font-weight:800;margin-top:auto;color:#fff}
+.card p{font-size:12px;color:#fff;opacity:.9;margin:6px 0 12px;line-height:1.3}
+.card .open{background:#fff;border:none;padding:7px 14px;border-radius:18px;font-weight:700;font-size:13px;align-self:flex-start;margin-left:auto;cursor:pointer}
+.c1{background:#0EA5A0}.c2{background:#FFCC4D}.c2 h3,.c2 p{color:#222}.c3{background:#FF8A2B}.c4{background:#FF6FA8}
+.footer{text-align:center;font-size:12px;color:#666;padding:14px}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.header{flex-wrap:wrap;gap:10px}.nav{gap:12px}}@media(max-width:600px){.cards{grid-template-columns:1fr}.hero h1{font-size:26px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="left">
-<div class="poster-card">
-<h1><span class="t1">SABKA</span><br><span class="t2">BIRTHDAY</span><br><span class="t3">D<span style="color:#1A9A8A">A</span>Y</span></h1>
-<div style="font-size:20px;margin:8px 0">🎈 ✨ 🎉 ⭐ 🎊</div>
-<div class="sub">Kisi ne<br>Wish nahi kiya?<br>Yahan aao,<br>Drawing banao!</div>
-<div style="margin-top:12px;font-size:28px">🎂 🎈 🎈</div>
+<div class="header">
+<div class="logo">🎂 Sabka B-Day</div>
+<div class="nav"><a class="active" href="index.html">Home</a><a href="#">Events</a><a href="#">Dashboard</a><a href="#">Resources</a><a class="btn-blue" href="#cards">Get Started</a></div>
 </div>
-<!-- Anime Girl Placeholder - CSS Emoji Version -->
-<div class="girl">
-<div style="font-size:180px;line-height:1;text-align:left">👧</div>
-<div style="background:#fff;border:2px solid #000;border-radius:12px;padding:6px 12px;font-family:'Fredoka';font-size:12px;position:absolute;top:20px;right:0">Cat in pocket!</div>
+
+<div class="hero">
+<h1>Celebrate Everyone's Special Day!</h1>
+<p>Your all-in-one dashboard to track birthdays, drawing contests, and rankings for Sabka B-Day. Stay organized, creative, and celebrate together — all in one place.</p>
+<button class="cta" onclick="document.getElementById('cards').scrollIntoView({behavior:'smooth'})">Explore Dashboard</button>
+<div class="small">No account needed • Free to use • Fun & Easy</div>
+</div>
+
+<div class="cards" id="cards">
+<div class="card c1">
+<div class="ill">🎨<br><span style="font-size:32px">🖌️ 📓</span></div>
+<h3>Drawing</h3><p>Join creative drawing contests & share your art</p>
+<button class="open" onclick="location.href='drawing.html'">Open →</button>
+</div>
+<div class="card c2">
+<div class="ill">🏆<br><span style="font-size:24px">📊</span></div>
+<h3>Ranking</h3><p>See your current ranking & points</p>
+<button class="open" onclick="location.href='ranking.html'">Details →</button>
+</div>
+<div class="card c3">
+<div class="ill">📅🎂<br><span style="font-size:32px">🎈</span></div>
+<h3>Birth Date</h3><p>Track and manage birthdays all year round</p>
+<button class="open" onclick="location.href='birthdate.html'">View →</button>
+</div>
+<div class="card c4">
+<div class="ill">📋<br>2️⃣1️⃣3️⃣</div>
+<h3>Ranking Board</h3><p>Overall leaddboard for all participants</p>
+<button class="open" onclick="location.href='ranking-board.html'">Open →</button>
 </div>
 </div>
 
-<div class="right">
-<div class="topbar">
-<div class="nav"><a class="active" href="#">Home</a><a href="#">How it works</a><a href="#">About</a></div>
-<div class="logo">Sabka<br>B-Day 🎂</div>
-</div>
-<div class="main">
-<h2>Welcome to Sabka B-Day!</h2>
-<p>A cheerful space to celebrate every birthday — even the ones no one remembered. Create fun birthday drawings instantly, share joy, and make someone smile today.</p>
-<div class="feats">
-<div class="feat"><div class="ic" style="background:#1A9A8A;color:#fff">✨</div><h4>Fun & Easy Drawing</h4><p>Simple easy drawing tool for everyone, no skills needed.</p></div>
-<div class="feat peach"><div class="ic" style="background:#FFB088">👨‍👩‍👧</div><h4>Celebrate Everyone</h4><p>Celebrate friends, family, even yourself. Every birthday matters.</p></div>
-<div class="feat"><div class="ic" style="background:#1A9A8A;color:#fff">🔗</div><h4>Share & Save</h4><p>Download and share your drawing as image to loved ones.</p></div>
-</div>
-</div>
-<a href="drawing.html" class="btn">Start Drawing →</a>
-<div class="small">No account needed • Free to use • For all ages</div>
-</div>
-</div>
+<div class="footer">© 2024 Sabka B-Day • Privacy • Support • Contact Us</div>
 </body>
-  </html>
+</html>
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Page</title>
+<style>body{font-family:sans-serif;text-align:center;padding:40px;background:#FFF7ED}a{color:#0E8A8A;font-weight:700;text-decoration:none}</style>
+</head><body><a href="index.html">← Back to Home</a><h1 style="margin-top:30px">🚧 Coming Soon!</h1><p>Ye page jaldi banega - Drawing / Birth Date / Ranking / Board</p></body></html>
