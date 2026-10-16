@@ -3,183 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabka B-Day - Welcome to Sabka B-Day!</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+<title>Sabka B-Day - Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Nunito',sans-serif;background:#FFF7ED;overflow-x:hidden}
-:root{--peach:#FFDAB9;--peach-dark:#FFB088;--teal:#2EC4B6;--teal-dark:#1E9E94;--ink:#0F2D3D;--grid:#CFF2F0}
-
-/* HEADER */
-.header{position:sticky;top:0;z-index:100;background:var(--peach);border-bottom:2px solid #00000010;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-wrap:wrap;gap:12px}
-.logo{display:flex;align-items:center;gap:8px;font-family:'Fredoka';font-weight:700;font-size:28px;color:var(--ink)}
-.logo i{font-size:28px}
-.nav{display:flex;gap:18px;align-items:center}
-.nav a{text-decoration:none;color:var(--ink);font-weight:700;font-size:14px;opacity:0.8}
-.nav a.active{border-bottom:3px solid var(--teal);color:var(--teal-dark)}
-.btn-teal{background:var(--teal);color:#fff;border:none;padding:10px 20px;border-radius:24px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 #1A8A80}
-.btn-teal:active{transform:translateY(2px);box-shadow:0 2px 0 #1A8A80}
-
-/* HERO */
-.hero{background:var(--peach-dark);text-align:center;padding:32px 16px 22px;position:relative;overflow:hidden}
-.hero::before{content:'✨ ⭐ 🎈';position:absolute;left:10px;top:10px;opacity:0.6}
-.hero h1{font-family:'Fredoka';font-size:48px;color:var(--ink);line-height:1.1;font-weight:700}
-.hero p{max-width:700px;margin:8px auto 18px;color:var(--ink);font-size:15px;opacity:0.8}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-outline{border:2px solid var(--ink);background:#FFEAD6;padding:10px 22px;border-radius:24px;font-weight:700;cursor:pointer}
-.hero.btn-teal{padding:11px 24px}
-
-/* CARDS */
-.cards{display:flex;gap:14px;justify-content:center;margin:-18px 16px 16px;flex-wrap:wrap;position:relative;z-index:2}
-.card{flex:1;min-width:260px;max-width:360px;border-radius:18px;padding:18px;text-align:center;box-shadow:0 8px 20px #00000012}
-.card.peach{background:var(--peach)}
-.card.teal{background:#7EDDD6}
-.card h3{font-family:'Fredoka';color:var(--ink);font-size:20px;margin:6px 0}
-.card p{font-size:13px;color:var(--ink);opacity:0.8}
-.card.icon{font-size:32px}
-
-/* CANVAS AREA */
-.canvas-wrap{margin:10px 16px 30px;background:#fff;border:3px solid var(--ink);border-radius:20px;overflow:hidden;position:relative;box-shadow:0 10px 0 #FFDAB966}
-.canvas-header{background:#fff;border-bottom:2px dashed var(--grid);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.tools{display:flex;gap:6px;background:#fff;border:2px solid #0001;padding:8px;border-radius:14px;align-items:center;flex-wrap:wrap}
-.tool{width:36px;height:36px;border-radius:10px;border:2px solid transparent;display:grid;place-items:center;cursor:pointer;font-size:18px;background:#f5f5f5}
-.tool.active{background:var(--teal);color:#fff;border-color:var(--ink)}
-.color{width:28px;height:28px;border-radius:50%;border:2px solid #0002;cursor:pointer}
-.color.active{outline:3px solid var(--ink);outline-offset:2px}
-
-#mainCanvas{width:100%;height:520px;display:block;touch-action:none;background-image:linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);background-size:40px 40px;cursor:crosshair}
-
-/* CHARACTERS - CSS draw */
-.char-left,.char-right{position:absolute;bottom:-10px;width:180px;z-index:5;pointer-events:none}
-.char-left{left:-10px}
-.char-right{right:-10px}
-.bubble{position:absolute;background:#FFE8B5;border:2px solid var(--ink);padding:6px 12px;border-radius:12px;font-family:'Fredoka';font-weight:700;font-size:14px;bottom:60px}
-.bubble.right{right:130px}
-.bubble.left{left:150px}
-.status{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:#fff;border:2px solid #0001;padding:6px 14px;border-radius:20px;font-size:12px;display:flex;gap:8px;align-items:center;box-shadow:0 4px 10px #0001}
-.dot{width:8px;height:8px;background:#2ECC71;border-radius:50%;display:inline-block}
-.tip{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--ink);opacity:0.7;font-weight:700}
-
-/* Responsive */
-@media(max-width:700px){
-.hero h1{font-size:32px}
-.cards{flex-direction:column;align-items:center}
-.char-left,.char-right{width:110px}
-#mainCanvas{height:420px}
-.header{justify-content:center}
+body{font-family:'Nunito',sans-serif;background:#FFD9C0;min-height:100vh;overflow-x:hidden}
+.wrap{display:flex;min-height:100vh;max-width:1400px;margin:0 auto}
+.left{flex:1.1;position:relative;display:flex;align-items:center;justify-content:center;padding:20px}
+.poster-card{background:#FFFEF9;border:2px solid #000;border-radius:12px;padding:18px 22px;width:360px;transform:rotate(-2deg);box-shadow:8px 8px 0 #0001;text-align:center}
+.poster-card h1{font-family:'Fredoka';font-size:52px;line-height:0.9;font-weight:700}
+.poster-card .t1{color:#1A9A8A}.poster-card .t2{color:#FF8C69}.poster-card .t3{color:#FF8C69}.poster-card .t3 span{color:#1A9A8A}
+.poster-card .sub{margin-top:12px;font-family:'Fredoka';font-size:24px;line-height:1.2;font-weight:600;color:#0F2D3D}
+.right{flex:1.2;background:#fff;margin:24px 24px 24px 0;border-radius:24px;padding:28px 32px;box-shadow:0 20px 60px #0001;display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.nav{display:flex;gap:24px}
+.nav a{text-decoration:none;color:#333;font-weight:700;font-size:14px}
+.nav a.active{border-bottom:2px solid #333;padding-bottom:2px}
+.logo{font-family:'Fredoka';font-weight:700;color:#1A9A8A;font-size:22px;line-height:1;text-align:right}
+.main h2{font-family:'Fredoka';font-size:44px;color:#0F2D3D;line-height:1.1;margin-bottom:12px}
+.main p{font-size:15px;color:#333;line-height:1.5}
+.feats{display:flex;gap:14px;margin:28px 0}
+.feat{flex:1;background:#E6F6F5;border-radius:16px;padding:18px 14px;text-align:center}
+.feat.peach{background:#FFF2E8}
+.feat .ic{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-size:22px}
+.feat h4{font-family:'Fredoka';font-size:15px;margin-bottom:6px}
+.feat p{font-size:12px;line-height:1.3}
+.btn{margin-top:auto;background:#1F8A7E;color:#fff;text-align:center;padding:18px;border-radius:999px;font-family:'Fredoka';font-size:22px;font-weight:700;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 0 #0F5A52;transition:.1s}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #0F5A52}
+.small{text-align:center;font-size:12px;color:#1F8A7E;margin-top:14px;font-weight:700}
+.girl{position:absolute;left:10px;bottom:0;width:62%;max-width:520px;pointer-events:none}
+@media(max-width:900px){
+.wrap{flex-direction:column}
+.girl{position:relative;width:100%;max-width:340px;left:0}
+.right{margin:0 16px 20px}
+.main h2{font-size:32px}
+.feats{flex-direction:column}
+.poster-card{width:300px}
 }
 </style>
 </head>
 <body>
-
-<div class="header">
-<div class="logo">🎨 Sabka B-Day 🖌️</div>
-<div class="nav">
-<a class="active" href="#">Home</a><a href="#">Gallery</a><a href="#">Templates</a><a href="#">How it Works</a><a href="#">Community</a>
-<button class="btn-teal" onclick="document.getElementById('mainCanvas').scrollIntoView({behavior:'smooth'})">Start Drawing</button>
+<div class="wrap">
+<div class="left">
+<div class="poster-card">
+<h1><span class="t1">SABKA</span><br><span class="t2">BIRTHDAY</span><br><span class="t3">D<span style="color:#1A9A8A">A</span>Y</span></h1>
+<div style="font-size:20px;margin:8px 0">🎈 ✨ 🎉 ⭐ 🎊</div>
+<div class="sub">Kisi ne<br>Wish nahi kiya?<br>Yahan aao,<br>Drawing banao!</div>
+<div style="margin-top:12px;font-size:28px">🎂 🎈 🎈</div>
+</div>
+<!-- Anime Girl Placeholder - CSS Emoji Version -->
+<div class="girl">
+<div style="font-size:180px;line-height:1;text-align:left">👧</div>
+<div style="background:#fff;border:2px solid #000;border-radius:12px;padding:6px 12px;font-family:'Fredoka';font-size:12px;position:absolute;top:20px;right:0">Cat in pocket!</div>
 </div>
 </div>
 
-<div class="hero">
-<h1>Welcome to Sabka B-Day!</h1>
-<p>Your collaborative digital art studio to create, doodle & celebrate birthdays together</p>
-<div class="hero-btns">
-<button class="btn-teal" onclick="startDraw()">Start the Canvas → ✨</button>
-<button class="btn-outline" onclick="alert('Templates jaldi aa rahe hain!')">Browse Templates</button>
+<div class="right">
+<div class="topbar">
+<div class="nav"><a class="active" href="#">Home</a><a href="#">How it works</a><a href="#">About</a></div>
+<div class="logo">Sabka<br>B-Day 🎂</div>
+</div>
+<div class="main">
+<h2>Welcome to Sabka B-Day!</h2>
+<p>A cheerful space to celebrate every birthday — even the ones no one remembered. Create fun birthday drawings instantly, share joy, and make someone smile today.</p>
+<div class="feats">
+<div class="feat"><div class="ic" style="background:#1A9A8A;color:#fff">✨</div><h4>Fun & Easy Drawing</h4><p>Simple easy drawing tool for everyone, no skills needed.</p></div>
+<div class="feat peach"><div class="ic" style="background:#FFB088">👨‍👩‍👧</div><h4>Celebrate Everyone</h4><p>Celebrate friends, family, even yourself. Every birthday matters.</p></div>
+<div class="feat"><div class="ic" style="background:#1A9A8A;color:#fff">🔗</div><h4>Share & Save</h4><p>Download and share your drawing as image to loved ones.</p></div>
 </div>
 </div>
-
-<div class="cards">
-<div class="card peach"><div class="icon">🧩</div><h3>Birthday Templates</h3><p>Pick & customize ready-to-draw designs</p></div>
-<div class="card teal"><div class="icon">🎨</div><h3>Stickers & Doodles</h3><p>Add cute stickers, emojis & craft details</p></div>
-<div class="card peach"><div class="icon">🔗</div><h3>Share & Celebrate</h3><p>Invite friends to draw & celebrate together</p></div>
+<a href="drawing.html" class="btn">Start Drawing →</a>
+<div class="small">No account needed • Free to use • For all ages</div>
 </div>
-
-<div class="canvas-wrap" id="canvasWrap">
-<div class="canvas-header">
-<div class="tools" id="tools">
-<div class="tool active" data-tool="brush" title="Brush">🖌️</div>
-<div class="tool" data-tool="pencil" title="Pencil">✏️</div>
-<div class="tool" data-tool="eraser" title="Eraser">🧽</div>
-<div class="tool" data-tool="sticker" title="Sticker">🎂</div>
-<div class="tool" onclick="undo()" title="Undo">↩️</div>
-<div class="tool" onclick="redo()" title="Redo">↪️</div>
-<div class="tool" onclick="clearCanvas()" title="Clear">🗑️</div>
-<div style="width:1px;height:24px;background:#0002;margin:0 4px"></div>
-<div class="color active" style="background:#FF8C42" data-color="#FF8C42"></div>
-<div class="color" style="background:#2EC4B6" data-color="#2EC4B6"></div>
-<div class="color" style="background:#FFD93D" data-color="#FFD93D"></div>
-<div class="color" style="background:#FF6B9E" data-color="#FF6B9E"></div>
-<div class="color" style="background:#9B5DE5" data-color="#9B5DE5"></div>
-<div class="color" style="background:#333" data-color="#333"></div>
 </div>
-<div style="font-size:13px;color:var(--teal-dark);font-weight:700">→ Complete the text! Add your birthday doodles</div>
-</div>
-
-<canvas id="mainCanvas"></canvas>
-
-<!-- Characters as Emoji Art -->
-<div class="char-left"> <div style="font-size:120px;filter:drop-shadow(0 4px 0 #0001)">🐰</div> <div class="bubble left">Tip: Click any dotted line to keep drawing!</div> </div>
-<div class="char-right"> <div style="font-size:120px">👹</div> <div class="bubble right" style="background:#fff">Yay!</div> </div>
-
-<div class="status"><span class="dot"></span> Auto-save: Draft saved • 12 collaborators online <span>👧 👦</span></div>
-<div class="tip">Tip: Click any dotted line to keep drawing!</div>
-</div>
-
-<script>
-const canvas=document.getElementById('mainCanvas');
-const ctx=canvas.getContext('2d');
-let tool='brush', color='#FF8C42', drawing=false, history=[], step=-1;
-
-function resize(){
-const rect=canvas.parentElement.getBoundingClientRect();
-canvas.width=rect.width;
-canvas.height=window.innerWidth<700?420:520;
-drawDotted();
-save();
-}
-window.addEventListener('resize',resize);
-
-function drawDotted(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle='#fff';
-ctx.fillRect(0,0,canvas.width,canvas.height);
-// grid already via CSS bg, now dotted text
-ctx.save();
-ctx.setLineDash([6,8]);
-ctx.strokeStyle='#0F2D3D90';
-ctx.lineWidth=2;
-ctx.lineCap='round';
-ctx.font="bold 72px Fredoka";
-ctx.textAlign="center";
-const cx=canvas.width/2;
-ctx.strokeText("Happy", cx+10, 170);
-ctx.strokeText("Happ_ Birthda_", cx, 270);
-// balloons & cake simple doodles
-ctx.setLineDash([]);
-ctx.font="64px serif";
-ctx.fillText("🎈🎈", canvas.width-160, 200);
-ctx.fillText("🎂", canvas.width-150, 300);
-ctx.restore();
-}
-function save(){step++; if(step<history.length){history.length=step} history.push(canvas.toDataURL());}
-function undo(){if(step>0){step--; let img=new Image(); img.src=history[step]; img.onload=()=>ctx.drawImage(img,0,0);}}
-function redo(){if(step<history.length-1){step++; let img=new Image(); img.src=history[step]; img.onload=()=>ctx.drawImage(img,0,0);}}
-function clearCanvas(){drawDotted(); save();}
-function getPos(e){const r=canvas.getBoundingClientRect();const t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
-canvas.addEventListener('mousedown',e=>{drawing=true; const p=getPos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y);});
-canvas.addEventListener('mousemove',e=>{if(!drawing)return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.strokeStyle=tool==='eraser'?'#fff':color; ctx.lineWidth=tool==='eraser'?28:tool==='pencil'?3:6; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.stroke();});
-window.addEventListener('mouseup',()=>{if(drawing){drawing=false; ctx.beginPath(); save();}});
-canvas.addEventListener('touchstart',e=>{e.preventDefault(); drawing=true; const p=getPos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y);},{passive:false});
-canvas.addEventListener('touchmove',e=>{e.preventDefault(); if(!drawing)return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.strokeStyle=tool==='eraser'?'#fff':color; ctx.lineWidth=tool==='eraser'?32:6; ctx.stroke();},{passive:false});
-canvas.addEventListener('touchend',()=>{drawing=false; ctx.beginPath(); save();});
-
-document.querySelectorAll('.tool[data-tool]').forEach(el=>el.onclick=()=>{document.querySelectorAll('.tool[data-tool]').forEach(x=>x.classList.remove('active')); el.classList.add('active'); tool=el.dataset.tool; if(tool==='sticker'){const x=canvas.width/2+Math.random()*100-50; const y=200+Math.random()*200; ctx.font='40px serif'; ctx.fillText(['🎉','🎂','🎈','⭐','💖'][Math.floor(Math.random()*5)],x,y); save();}});
-document.querySelectorAll('.color').forEach(c=>c.onclick=()=>{document.querySelectorAll('.color').forEach(x=>x.classList.remove('active')); c.classList.add('active'); color=c.dataset.color; tool='brush';});
-
-function startDraw(){canvas.scrollIntoView({behavior:'smooth'}); setTimeout(()=>{canvas.style.boxShadow='0 0 0 6px #2EC4B655'; setTimeout(()=>canvas.style.boxShadow='none',1000)},400)}
-
-resize();
-</script>
 </body>
   </html>
