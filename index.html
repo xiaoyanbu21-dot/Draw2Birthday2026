@@ -1,6 +1,64 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Draw2Birthday 2026</title><script src="https://cdn.tailwindcss.com"></script></head><body class="bg-[#FFF8E1]">
-<div class="bg-black text-white p-4 text-center"><h1 class="text-2xl font-black text-yellow-300">Draw2Birthday 2026 🎂</h1><p class="text-[11px] mt-1 opacity-80">Sab ke liye - Anime, Kindness, Realistic. Top 25 FREE fir Anime paid, Kindness FREE.</p></div>
-<div style="max-width:1200px;margin:auto;padding:8px;display:grid;grid-template-columns:2fr 1fr;gap:8px">
-<div style="background:white;padding:8px;border-radius:12px;border:1px solid #ddd"><canvas id="c" width="800" height="420" style="width:100%;border:2px dashed #ccc;border-radius:8px;background:white"></canvas><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><input id="col" type="color" value="#000000"><input id="sz" type="range" min="2" max="30" value="6"><button id="clr" style="background:#fee;padding:4px 8px;border-radius:20px;font-size:12px">Clear</button><button id="dl" style="background:black;color:white;padding:4px 8px;border-radius:20px;font-size:12px">Download</button><button class="sticker" data-e="🎂">🎂</button><button class="sticker" data-e="🎈">🎈</button><button class="sticker" data-e="🦄">🦄</button></div></div>
-<div><div style="background:black;color:white;padding:12px;border-radius:12px"><h3 style="color:#fde047;font-size:12px;font-weight:bold">Save karo</h3><input id="nm" placeholder="Naam" style="width:100%;margin-top:8px;color:black;border-radius:20px;padding:4px 8px;font-size:12px"><input id="bd" type="date" style="width:100%;margin-top:8px;color:black;border-radius:20px;padding:4px 8px;font-size:12px"><select id="tp" style="width:100%;margin-top:8px;color:black;border-radius:20px;padding:4px 8px;font-size:12px"><option value="kindness">Kindness FREE</option><option value="anime">Anime</option></select><input id="ab" placeholder="About drawing" style="width:100%;margin-top:8px;color:black;border-radius:12px;padding:4px 8px;font-size:12px"><button id="sv" style="width:100%;margin-top:8px;background:#fde047;color:black;padding:8px;border-radius:20px;font-weight:bold;font-size:12px">Save + Rank</button><p id="cnt" style="font-size:10px;margin-top:8px;color:#fef08a"></p></div><div style="background:white;margin-top:8px;padding:8px;border-radius:12px;border:1px solid #ddd"><h3 style="font-weight:900;font-size:12px">🏆 TOP 25 Leaderboard</h3><div id="lb" style="margin-top:8px;max-height:400px;overflow:auto"></div></div></div></div>
-<script>const ca=document.getElementById('c'),cx=ca.getContext('2d');let d=false,lx=0,ly=0,col='#000',sz=6;cx.fillStyle='white';cx.fillRect(0,0,ca.width,ca.height);function P(e){let r=ca.getBoundingClientRect();let s=ca.width/r.width;let t=e.touches?e.touches[0]:e;return{x:(t.clientX-r.left)*s,y:(t.clientY-r.top)*s};}ca.addEventListener('pointerdown',e=>{d=true;let p=P(e);lx=p.x;ly=p.y;});window.addEventListener('pointerup',()=>d=false);ca.addEventListener('pointermove',e=>{if(!d)return;let p=P(e);cx.beginPath();cx.moveTo(lx,ly);cx.lineTo(p.x,p.y);cx.strokeStyle=col;cx.lineWidth=sz;cx.lineCap='round';cx.stroke();lx=p.x;ly=p.y;});document.getElementById('col').oninput=e=>col=e.target.value;document.getElementById('sz').oninput=e=>sz=e.target.value;document.getElementById('clr').onclick=()=>{cx.clearRect(0,0,ca.width,ca.height);cx.fillStyle='white';cx.fillRect(0,0,ca.width,ca.height);};document.querySelectorAll('.sticker').forEach(b=>b.onclick=()=>{cx.font='50px serif';cx.fillText(b.dataset.e,Math.random()*600+50,Math.random()*300+50);});document.getElementById('dl').onclick=()=>{let a=document.createElement('a');a.download='drawing.png';a.href=ca.toDataURL();a.click();};let arts=JSON.parse(localStorage.getItem('d2b')||'[]');function R(){let b=document.getElementById('lb');b.innerHTML='';arts.sort((a,b)=>b.stars-a.stars);arts.slice(0,25).forEach((a,i)=>{let d=document.createElement('div');d.style='border:1px solid #ddd;border-radius:8px;padding:4px;display:flex;gap:4px;align-items:center;background:#fefce8;margin-bottom:4px';d.innerHTML=`<b style="font-size:10px">#${i+1}</b><img src="${a.img}" style="width:32px;height:32px;border-radius:4px;border:1px solid #ccc"><div style="flex:1"><b style="font-size:10px">${a.name}</b><p style="font-size:9px">⭐${a.stars} ${a.tp} ${a.date}</p></div><button class="st" style="background:black;color:white;font-size:9px;padding:2px 6px;border-radius:20px" data-i="${arts.indexOf(a)}">+⭐</button>`;b.appendChild(d);});document.getElementById('cnt').innerText=`${arts.length}/25 slots. ${arts.length>=25?'Anime paid, Kindness FREE':'FREE hai'}`;document.querySelectorAll('.st').forEach(x=>x.onclick=()=>{arts[x.dataset.i].stars++;localStorage.setItem('d2b',JSON.stringify(arts));R();});}document.getElementById('sv').onclick=()=>{let n=document.getElementById('nm').value||'Guest';let dt=document.getElementById('bd').value||'2026-01-01';let tp=document.getElementById('tp').value;let ab=document.getElementById('ab').value||'';arts.push({name:n,date:dt,tp:tp,about:ab,img:ca.toDataURL(),stars:5});localStorage.setItem('d2b',JSON.stringify(arts));R();alert('Saved!');};R();</script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Draw2Birthday2026 Fixed</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui;background:#fff}
+.header{background:#000;color:#fff;text-align:center;padding:16px;font-weight:bold}
+.wrap{max-width:900px;margin:auto;padding:12px}
+#c{width:100%;height:60vh;min-height:450px;border:3px solid #000;border-radius:12px;display:block;touch-action:none;cursor:crosshair;background:#fff}
+.tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.tools button,.tools input{padding:10px 14px;border:2px solid #000;border-radius:8px;font-weight:bold}
+.tools button.active{background:#000;color:#fff}
+.stickers{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.stickers button{font-size:28px;padding:6px 12px;border:2px solid #000;border-radius:8px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.inputs input{padding:12px;border:2px solid #000;border-radius:8px;width:100%}
+.action{display:flex;gap:10px;justify-content:center;margin:16px 0}
+.action button{padding:14px 20px;border-radius:10px;font-weight:bold;flex:1}
+#saveBtn{background:#000;color:#fff;border:none}
+#clearBtn{background:#fff;border:2px solid #000}
+#dlBtn{background:#ffde59;border:2px solid #000}
+</style>
+</head>
+<body>
+<div class="header">🎂 Draw2Birthday2026 - Kindness Drawing</div>
+<div class="wrap">
+<canvas id="c"></canvas>
+<div class="tools">
+<button id="pen" class="active">✏️ Pen</button>
+<button id="eraser">🧽 Eraser</button>
+<input type="color" id="col" value="#000000">
+<input type="range" id="sz" min="1" max="40" value="4">
+</div>
+<div class="stickers">
+<button data-e="🎂">🎂</button><button data-e="🎈">🎈</button><button data-e="🎁">🎁</button><button data-e="🦄">🦄</button><button data-e="🌈">🌈</button><button data-e="❤️">❤️</button>
+</div>
+<div class="inputs"><input id="name" placeholder="Your Name"><input id="bdate" type="date"></div>
+<div class="action"><button id="clearBtn">Clear</button><button id="dlBtn">Download</button><button id="saveBtn">Save + Rank</button></div>
+<div style="border:2px solid #000;border-radius:12px;padding:12px;margin-top:10px"><h3>🏆 Top 25</h3><div id="board">No drawings yet</div></div>
+</div>
+<script>
+const ca=document.getElementById('c'),cx=ca.getContext('2d');
+let drawing=false,last={x:0,y:0},mode='pen';
+function rs(){const r=ca.getBoundingClientRect(),d=window.devicePixelRatio||1;ca.width=r.width*d;ca.height=r.height*d;ca.style.width=r.width+'px';ca.style.height=r.height+'px';cx.setTransform(d,0,0,d,0,0);cx.lineCap='round';cx.lineJoin='round';}
+rs();setTimeout(rs,100);
+function P(e){const r=ca.getBoundingClientRect();const t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+function S(e){e.preventDefault();drawing=true;last=P(e);cx.beginPath();cx.moveTo(last.x,last.y);}
+function M(e){if(!drawing)return;e.preventDefault();const p=P(e);cx.globalCompositeOperation=mode==='eraser'?'destination-out':'source-over';cx.strokeStyle=document.getElementById('col').value;cx.lineWidth=document.getElementById('sz').value;cx.lineTo(p.x,p.y);cx.stroke();last=p;}
+function E(e){if(!drawing)return;e.preventDefault();drawing=false;cx.closePath();cx.globalCompositeOperation='source-over';}
+ca.addEventListener('mousedown',S);ca.addEventListener('mousemove',M);ca.addEventListener('mouseup',E);ca.addEventListener('mouseout',E);
+ca.addEventListener('touchstart',S,{passive:false});ca.addEventListener('touchmove',M,{passive:false});ca.addEventListener('touchend',E,{passive:false});ca.addEventListener('touchcancel',E,{passive:false});
+document.getElementById('pen').onclick=()=>{mode='pen';pen.classList.add('active');eraser.classList.remove('active');};
+document.getElementById('eraser').onclick=()=>{mode='eraser';eraser.classList.add('active');pen.classList.remove('active');};
+clearBtn.onclick=()=>{const r=ca.getBoundingClientRect();cx.clearRect(0,0,r.width,r.height);};
+dlBtn.onclick=()=>{const a=document.createElement('a');a.download='drawing.png';a.href=ca.toDataURL();a.click();};
+document.querySelectorAll('.stickers button').forEach(b=>{b.onclick=()=>{cx.font='40px serif';const r=ca.getBoundingClientRect();cx.fillText(b.dataset.e,r.width/2,r.height/2);};});
+let db=JSON.parse(localStorage.getItem('d2b')||'[]');
+function rb(){board.innerHTML=db.length?db.slice(0,25).map((d,i)=>`${i+1}. <b>${d.n}</b> - ${d.d}`).join('<br>'):'No drawings yet';}rb();
+saveBtn.onclick=()=>{const n=name.value||'Anon';const d=bdate.value||new Date().toISOString().split('T')[0];db.unshift({n,d});db=db.slice(0,25);localStorage.setItem('d2b',JSON.stringify(db));rb();alert('Saved!');};
+</script>
+</body>
+                                                                                              </html>
